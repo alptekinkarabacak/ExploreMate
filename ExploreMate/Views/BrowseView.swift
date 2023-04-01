@@ -20,6 +20,6 @@ struct BrowseView: View {
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseView()
+        BrowseView() 
     }
 }

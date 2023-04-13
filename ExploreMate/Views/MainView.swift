@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         TabView {
             NavigationView{
-                MapView()
+                //MapView()
             }
             .tabItem {
                 Image(systemName: "map.fill")

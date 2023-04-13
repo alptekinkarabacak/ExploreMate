@@ -9,21 +9,16 @@ import SwiftUI
 import MapKit
 
 
-struct MapView: View {
-    @StateObject var manager = LocationManager()
-    @State var tracking:MapUserTrackingMode = .follow
-    var body: some View {
-        Map(
-           coordinateRegion: $manager.region,
-           interactionModes: MapInteractionModes.all,
-           showsUserLocation: true,
-           userTrackingMode: $tracking
-        )
-    }
-}
+struct MapView: UIViewRepresentable {
+    var Users: [User]
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView()
-    }
+        func makeUIView(context: Context) -> MKMapView {
+            MKMapView(frame: .zero)
+        }
+
+        func updateUIView(_ view: MKMapView, context: Context) {
+            view.removeAnnotations(view.annotations)
+            view.addAnnotations(Users.map { $0.annotation })
+            view.showAnnotations(view.annotations, animated: true)
+        }
 }
